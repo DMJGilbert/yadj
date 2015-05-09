@@ -1,0 +1,23 @@
+<template name="party">
+	<div id="apiswf"></div>
+	<script>
+		$(function () {
+			var rdioApi;
+			swfobject.embedSWF('http://www.rdio.com/api/swf/', 'apiswf', 1, 1, '9.0.0', 'expressInstall.swf', {
+				'playbackToken': 'GAlNi78J_____zlyYWs5ZG02N2pkaHlhcWsyOWJtYjkyN2xvY2FsaG9zdEbwl7EHvbylWSWFWYMZwfc=',
+				'domain': 'localhost',
+				'listener': 'rdioListener'
+			}, {
+				'allowScriptAccess': 'always'
+			}, {});
+		});
+
+		var rdioListener = {};
+
+		rdioListener.ready = function ready(user) {
+			console.log(user);
+			rdioApi = $('#apiswf').get(0);
+			rdioApi.rdio_play('a239851');
+		}
+	</script>
+</template>

@@ -1,0 +1,35 @@
+<template name="login">
+	<div class="container fill">
+		<div class="section">
+			<div class="row">
+				<h3 class="indigo-text">Login</h3>
+				<a data-link="google" class="btn indigo">Sign in with Google</a>
+				<br>
+				<br>
+				<form id="login" class="col s12">
+					<div class="row">
+						<div class="input-field indigo-text col s12">
+							<i class="mdi-communication-email prefix"></i>
+							<input id="email" type="email" class="validate indigo-text">
+							<label for="email">Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field indigo-text col s12">
+							<i class="mdi-action-lock prefix"></i>
+							<input id="password" type="password" class="validate indigo-text">
+							<label for="password">Password</label>
+						</div>
+					</div>
+					<div class="right">
+						<a class="waves-effect waves-indigo btn-flat" href="/register">Register
+						</a>
+						<button class="btn waves-effect indigo waves-light" type="submit" name="submit">Submit
+							<i class="mdi-content-send right"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,54 @@
+html,
+body {
+	height: 100%;
+}
+
+body > div:not([class]),
+.container.fill {
+	min-height: calc(100% - 309px);
+}
+
+nav .nav-wrapper {
+	max-width: 1500px;
+	width: 95%;
+	margin: auto;
+}
+
+nav .brand-logo {
+	height: 100%;
+	img {
+		height: 50%;
+		margin: 17.5% 0;
+	}
+}
+
+.parallax-container {
+	min-height: 380px;
+	height: auto;
+	.section {
+		width: 100%;
+	}
+}
+
+.parallax-large {
+	height: 70vh;
+	min-height: 500px;
+}
+
+#playlistSearch {
+	margin-bottom: -2px;
+}
+
+.collection .collection-item.avatar {
+	height: 65px;
+	img {
+		position: absolute;
+		width: 65px;
+		height: 65px;
+		overflow: hidden;
+		left: 0;
+		top: -1px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

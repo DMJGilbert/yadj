@@ -1,0 +1,51 @@
+<template name="host">
+	<div class="container fill">
+		<div class="section">
+			<div class="row">
+				<h3 class="indigo-text">Create new party</h3>
+
+				<form id="party" class="col s12">
+					<div class="row">
+						<div class="input-field indigo-text col s12">
+							<i class="mdi-action-label prefix"></i>
+							<input id="name" type="text" class="validate indigo-text">
+							<label for="name">Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field indigo-text col s12">
+							<i class="mdi-action-lock prefix"></i>
+							<input id="password" type="password" class="validate indigo-text">
+							<label for="password">Password (Leave blank for public)</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field indigo-text col s12">
+							<i class="mdi-action-search prefix"></i>
+							<input id="playlistSearch" type="text" class="validate indigo-text">
+							<label for="playlistSearch">Fallback playlist (Based on an Artist/Band)</label>
+						</div>
+						{{#if artist.length }}
+						<ul class="collection">
+							{{#each artist}}
+							<li class="collection-item avatar">
+								<img src="" alt="">
+								<span class="title"></span>
+								<p>
+								</p>
+							</li>
+							{{/each}}
+						</ul>
+						{{/if}}
+					</div>
+
+					<div class="right">
+						<button class="btn waves-effect indigo waves-light" type="submit" name="submit">Submit
+							<i class="mdi-content-send right"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</template>

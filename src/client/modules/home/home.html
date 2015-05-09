@@ -1,0 +1,76 @@
+<template name="home">
+	<div id="index-banner" class="parallax-container parallax-large valign-wrapper">
+		<div class="section no-pad-bot">
+			<div class="container">
+				{{#if currentUser }}
+				<h1 class="header center indigo-text text-lighten-5">Welcome back, DJ {{currentUser.profile.name}}</h1>
+				{{else}}
+				<h1 class="header center indigo-text text-lighten-5">Yet Another DJ</h1>
+				{{/if}}
+				<div class="row center">
+					<h5 class="header col s12 indigo-text text-lighten-5">A secure collaborative playlist, to enable you and your friends to party fairly</h5>
+				</div>
+				<div class="row center">
+					{{#if currentUser }}
+					<a href="/host" class="btn-large waves-effect indigo">Host</a>
+					<a href="/join" class="btn-large waves-effect indigo">Join</a>
+					{{else}}
+					<a href="/register" class="btn-large waves-effect indigo">Get Started</a>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		<div class="parallax"><img src="images/hero-bg.jpg">
+		</div>
+	</div>
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center indigo-text"><i class="mdi-image-flash-on"></i></h2>
+						<h5 class="center">Real Time</h5>
+
+						<p class="light">YADJ is real time interface that provides all users with current playlist. Additionally users are able to see the addtions as they happen</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center indigo-text"><i class="mdi-social-group"></i></h2>
+						<h5 class="center">Secure</h5>
+
+						<p class="light">By utilising the accounts, we ensure your party will never get gate crashed. Add party goers by email or share a password to give them access to your party.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center indigo-text"><i class="mdi-action-settings"></i></h2>
+						<h5 class="center">Fair</h5>
+						<p class="light">We provide a algorithm so to ensure all users get their songs played, based on the number of requests and the time of the requests.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="parallax-container valign-wrapper">
+		<div class="parallax"><img src="images/party-bg.jpg">
+		</div>
+	</div>
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				<div class="col s12 center">
+					<h3><i class="mdi-action-question-answer indigo-text"></i></h3>
+					<h4>Contact</h4>
+					<p class="left-align light"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.parallax').parallax();
+	</script>
+
+</template>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<svg width="344" height="130" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="132" width="346" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text font-weight="normal" xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="116" id="svg_8" y="107.317098" x="16.999917" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#3f51b5">YA   J</text>
+  <path stroke="#000" transform="rotate(90 220.03656005859375,64.83992004394534) " d="m252.593292,101.460953c0,1.127373 -0.913071,2.040726 -2.040863,2.040726l-13.067413,0c-1.126526,0 -2.040909,-0.913353 -2.040909,-2.040726l0,-27.763229c0,-1.127213 0.914383,-2.040558 2.040909,-2.040558l13.067413,0c1.127792,0 2.040863,0.913345 2.040863,2.040558l0,27.763229zm-48.380478,0c0,1.127373 -0.913071,2.040726 -2.040924,2.040726l-13.068802,0c-1.126465,0 -2.039551,-0.913353 -2.039551,-2.040726l0,-27.763229c0,-1.127213 0.913086,-2.040558 2.039551,-2.040558l13.068802,0c1.127853,0 2.040924,0.913345 2.040924,2.040558l0,27.763229zm15.788269,-75.282787c-23.647446,0 -42.842941,19.022331 -43.138062,42.597172l7.486328,0c0.242447,-19.484985 16.108444,-35.206367 35.651733,-35.206367c19.541962,0 35.407745,15.721382 35.647537,35.206367l7.486359,0c-0.29245,-23.574841 -19.493011,-42.597172 -43.133896,-42.597172zm-43.077454,64.192089l7.350647,0l0,-21.638268l-7.350647,0l0,21.638268zm78.664383,-21.641212l0,21.638252l7.62207,0l0,-21.638252l-7.62207,0z" id="svg_3" stroke-opacity="null" stroke-width="0" fill="#3f51b5"/>
+  <path id="svg_7" d="m191.541046,26.079231" opacity="0.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#3f51b5"/>
+ </g>
+</svg>

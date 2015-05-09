@@ -1,0 +1,44 @@
+<template name="header">
+	<div class="navbar-fixed">
+		<nav class="grey lighten-5">
+			<div class="nav-wrapper">
+				<div class="col s12">
+					<a href="/" class="brand-logo"><img src="/images/logo.svg" alt="">
+					</a>
+					<a href="#" data-activates="mobile-nav" class="button-collapse indigo-text"><i class="mdi-navigation-menu"></i></a>
+					<div class="right hide-on-med-and-down">
+						{{#if currentUser}}
+						<a data-link="logout" class="waves-effect waves-light indigo btn">logout</a>
+						{{else}}
+						<a href="/login" class="waves-effect waves-light indigo btn">login</a> 
+						{{/if}}
+					</div>
+					<ul class="right hide-on-med-and-down indigo-text text-darken-2">
+						{{#if currentUser}}
+						<li><a class="indigo-text" href="/host">Host</a>
+						</li>
+						<li><a class="indigo-text" href="/host">Join</a>
+						</li>
+						{{else}}
+						<li><a class="indigo-text" href="/register">Register</a>
+						</li>
+						{{/if}}
+					</ul>
+					<ul class="side-nav" id="mobile-nav">
+						{{#if currentUser}}
+						<li><a class="indigo-text" href="/host">Host</a>
+						</li>
+						<li><a class="indigo-text" href="/host">Join</a>
+						</li>
+						<a data-link="logout" class="waves-effect waves-light indigo btn white-text">logout</a>
+						{{else}}
+						<li><a href="/register">Register</a>
+						</li>
+						<a href="/login" class="waves-effect waves-light indigo btn white-text">login</a> 
+						{{/if}}
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</template>

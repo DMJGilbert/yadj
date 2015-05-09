@@ -1,0 +1,22 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+insecure
+iron:router
+aldeed:collection2
+dburles:collection-helpers
+underscore
+jquery
+accounts-base
+fourseven:scss@2.1.1
+materialize:materialize
+accounts-google
+accounts-ui
+accounts-password
+service-configuration
+matb33:collection-hooks
+npm-container
+meteorhacks:npm
