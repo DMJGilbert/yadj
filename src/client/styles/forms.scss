@@ -1,19 +1,38 @@
 .input-field {
- 	label {
- 		color: #3f51b5;
- 	}
- 	input[type=text]:focus + label, input[type=password]:focus + label, input[type=email]:focus + label  {
- 		color: #3f51b5;
- 	}
- 	input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
- 		border-bottom: 1px solid #3f51b5;
- 		box-shadow: 0 1px 0 0 #3f51b5;
- 	}
- 	input[type=text].valid, input[type=email].valid, input[type=password].valid{
- 		border-bottom: 1px solid #3f51b5;
- 		box-shadow: 0 1px 0 0 #3f51b5;
- 	}
- 	.prefix.active {
- 		color: #3f51b5;
- 	}
- }
+	label {
+		color: #3f51b5;
+	}
+	input[type=text]:focus + label,
+	input[type=password]:focus + label,
+	input[type=email]:focus + label {
+		color: #3f51b5;
+	}
+	input[type=text]:focus,
+	input[type=password]:focus,
+	input[type=email]:focus {
+		border-bottom: 1px solid #3f51b5;
+		box-shadow: 0 1px 0 0 #3f51b5;
+	}
+	input[type=text].valid,
+	input[type=email].valid,
+	input[type=password].valid {
+		border-bottom: 1px solid #3f51b5;
+		box-shadow: 0 1px 0 0 #3f51b5;
+	}
+	.prefix.active {
+		color: #3f51b5;
+	}
+}
+
+.collection-item.interactive {
+	&:hover {
+		background-color: #fafafa;
+		color: #3f51b5;
+		cursor: pointer;
+	}
+	&.selected {
+		color: #fafafa;
+		background-color: #3f51b5;
+		cursor: pointer;
+	}
+}

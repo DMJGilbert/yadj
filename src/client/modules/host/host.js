@@ -18,27 +18,54 @@ Router.route('/host', {
 
 
 Template.host.events = {
+	'submit #host': function (event, template) {
+		var fallback = Session.get('selectedArtist').key
+		var name = template.find('#name').value;
+		var password = template.find('#password').value;
+		Parties.insert({
+			name: name,
+			password: password,
+			fallback: fallback
+		}, function (er, _id) {
+			Router.go('/party/' + _id);
+		});
+		event.preventDefault();
+		return false;
+	},
+
+	'keydown #playlistSearch': function (event, template) {
+		var search = template.find('#playlistSearch').value;
+		if (window.searchTimeout) {
+			clearTimeout(window.searchTimeout);
+		}
+		if (event.keyCode == 13) {
+			event.preventDefault();
+			lookupArtists(search)
+		}
+	},
+
 	'keyup #playlistSearch': function (event, template) {
 		var search = template.find('#playlistSearch').value;
-		if (search.length > 2) {
-			if (window.searchTimeout) {
-				clearTimeout(window.searchTimeout);
-			}
-			window.searchTimeout = setTimeout(function () {
-				Meteor.call('findArtists', search, function (error, result) {
-					if(error){
-						console.error(error);						
-					}
-					console.log(result);
-					Session.set('artists', {})
-				});
-			}, 500);
-		} else {
-			if (window.searchTimeout) {
-				clearTimeout(window.searchTimeout);
-			}
-			Session.set('playlists', undefined);
+		if (window.searchTimeout) {
+			clearTimeout(window.searchTimeout);
+			delete window.searchTimeout;
 		}
+		if (search.length > 2) {
+			window.searchTimeout = setTimeout(function () {
+				lookupArtists(search)
+			}, 1000);
+		} else {
+			Session.set('artists', undefined);
+		}
+	},
+
+	'click li.collection-item.interactive.avatar': function (event, template) {
+		var id = $(event.currentTarget).attr('id');
+		Session.get('artists').forEach(function (artist) {
+			if (artist.key == id) {
+				Session.set('selectedArtist', artist);
+			}
+		});
 	}
 };
 
@@ -46,8 +73,23 @@ Template.host.helpers({
 	artists: function () {
 		return Session.get('artists');
 	},
-	image: function (images) {
-		return images[images.length - 1].url;
+	image: function (image) {
+		return image.split('%')[0];
+	},
+	isActive: function (key) {
+		if (Session.get('selectedArtist') && Session.get('selectedArtist').key == key) {
+			return 'selected';
+		}
 	}
 });
-//playlistSearch
+
+function lookupArtists(search) {
+	Meteor.call('findArtists', search, function (error, result) {
+		if (error) {
+			console.error(error);
+		}
+		var data = JSON.parse(result.content);
+		console.log(data.result.results);
+		Session.set('artists', data.result.results)
+	});
+}

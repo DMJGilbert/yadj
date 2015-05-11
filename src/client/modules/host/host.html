@@ -4,7 +4,7 @@
 			<div class="row">
 				<h3 class="indigo-text">Create new party</h3>
 
-				<form id="party" class="col s12">
+				<form id="host" class="col s12">
 					<div class="row">
 						<div class="input-field indigo-text col s12">
 							<i class="mdi-action-label prefix"></i>
@@ -25,15 +25,17 @@
 							<input id="playlistSearch" type="text" class="validate indigo-text">
 							<label for="playlistSearch">Fallback playlist (Based on an Artist/Band)</label>
 						</div>
-						{{#if artist.length }}
+						{{#if artists.length }}
 						<ul class="collection">
-							{{#each artist}}
-							<li class="collection-item avatar">
-								<img src="" alt="">
-								<span class="title"></span>
-								<p>
-								</p>
-							</li>
+							{{#each artists}}
+								{{#if hasRadio}} {{#if length}}
+									<li id="{{key}}" class="collection-item interactive avatar {{isActive key}}">
+										<img src="{{image dynamicIcon}}" alt="{{name}}">
+										<span class="title">{{name}}</span>
+										<p>#{{length}} songs
+										</p>
+									</li>
+								{{/if}} {{/if}}
 							{{/each}}
 						</ul>
 						{{/if}}

@@ -100,6 +100,6 @@ Meteor.rdioOAuth = function(consumer, urlString, params, token, method, realm, t
 	var header = "OAuth " + headerParams.map(function (param) {
 		return param[0] + '="' + param[1] + '"';
 	}).join(", ");
-
+	console.log(header);
 	return header;
 }

@@ -5,7 +5,7 @@
 /* globals Router */
 Router.configure({
 	layoutTemplate: 'layoutMain',
-	loadingTemplate: 'loading'
+	//	loadingTemplate: 'loading'
 });
 
 Accounts.ui.config({
@@ -16,21 +16,21 @@ Accounts.ui.config({
 });
 
 Router.onBeforeAction(function () {
-	if(Meteor.userId()) {
+	if (Meteor.userId()) {
 		this.render('home');
 	} else {
 		this.next();
 	}
 }, {
-only: ['login', 'register']
+	only: ['login', 'register']
 });
 
 Router.onBeforeAction(function () {
-	if(!Meteor.userId()) {
+	if (!Meteor.userId()) {
 		this.render('home');
 	} else {
 		this.next();
 	}
 }, {
-only: ['host', 'join']
+	only: ['host', 'join', 'party']
 });
