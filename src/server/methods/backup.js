@@ -1,15 +1,16 @@
 Meteor.methods({
-	findArtists: function (search) {
-		check(search, String);
+	getBackup: function (key) {
+		check(key, String);
 
 		var user = Meteor.user();
 		if (!user) return "No user";
 
 		var rdio = Rdio.forUser(user);
 		if (!rdio) return "No Rdio creadentials";
-		return rdio.call('search', {
-			query: search,
-			types: 'Artist'
+
+		return rdio.call('generateStation', {
+			station_key: key,
+			count: 20
 		});
 	}
 });

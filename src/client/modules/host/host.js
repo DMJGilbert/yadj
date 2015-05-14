@@ -19,7 +19,7 @@ Router.route('/host', {
 
 Template.host.events = {
 	'submit #host': function (event, template) {
-		var fallback = Session.get('selectedArtist').key
+		var fallback = Session.get('selectedArtist').radioKey;
 		var name = template.find('#name').value;
 		var password = template.find('#password').value;
 		Parties.insert({
@@ -27,7 +27,9 @@ Template.host.events = {
 			password: password,
 			fallback: fallback
 		}, function (er, _id) {
-			Router.go('/party/' + _id);
+			if (_id) {
+				Router.go('/party/' + _id);
+			}
 		});
 		event.preventDefault();
 		return false;
@@ -53,13 +55,13 @@ Template.host.events = {
 		if (search.length > 2) {
 			window.searchTimeout = setTimeout(function () {
 				lookupArtists(search)
-			}, 1000);
+			}, 600);
 		} else {
 			Session.set('artists', undefined);
 		}
 	},
 
-	'click li.collection-item.interactive.avatar': function (event, template) {
+	'click li.collection-item.interactive': function (event, template) {
 		var id = $(event.currentTarget).attr('id');
 		Session.get('artists').forEach(function (artist) {
 			if (artist.key == id) {
@@ -84,12 +86,11 @@ Template.host.helpers({
 });
 
 function lookupArtists(search) {
-	Meteor.call('findArtists', search, function (error, result) {
+	Meteor.call('findArtists', search, function (error, data) {
 		if (error) {
 			console.error(error);
 		}
-		var data = JSON.parse(result.content);
-		console.log(data.result.results);
-		Session.set('artists', data.result.results)
+		console.log(data.results);
+		Session.set('artists', data.results)
 	});
 }

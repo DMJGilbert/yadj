@@ -16,7 +16,7 @@
 						<div class="input-field indigo-text col s12">
 							<i class="mdi-action-lock prefix"></i>
 							<input id="password" type="password" class="validate indigo-text">
-							<label for="password">Password (Leave blank for public)</label>
+							<label for="password">Password</label>
 						</div>
 					</div>
 					<div class="row">
@@ -28,14 +28,12 @@
 						{{#if artists.length }}
 						<ul class="collection">
 							{{#each artists}}
-								{{#if hasRadio}} {{#if length}}
 									<li id="{{key}}" class="collection-item interactive avatar {{isActive key}}">
 										<img src="{{image dynamicIcon}}" alt="{{name}}">
 										<span class="title">{{name}}</span>
 										<p>#{{length}} songs
 										</p>
 									</li>
-								{{/if}} {{/if}}
 							{{/each}}
 						</ul>
 						{{/if}}

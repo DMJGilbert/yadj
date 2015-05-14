@@ -13,10 +13,9 @@ jquery
 accounts-base
 fourseven:scss@2.1.1
 materialize:materialize
-accounts-google
-accounts-ui
-accounts-password
+npaton:accounts-rdio
 service-configuration
 matb33:collection-hooks
 npm-container
-meteorhacks:npm
+aldeed:template-extension
+npaton:rdio

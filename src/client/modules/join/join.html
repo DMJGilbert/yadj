@@ -1,10 +1,41 @@
 <template name="join">
 	<div class="container fill">
 		<div class="section">
-			Join...
-			{{#each parties}}
-			<h3>{{name}}</h3>
-			{{/each}}
+			<div class="row">
+				<h3 class="indigo-text">Join a party</h3>
+				<div class="row">
+					<form class="col s12">
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="id" type="text">
+								<label for="id">Party ID</label>
+							</div>
+							<div class="input-field col s6">
+								<input id="password" type="password">
+								<label for="password">Password</label>
+							</div>
+						</div>
+						<div class="right">
+							<button class="btn waves-effect indigo waves-light" type="submit" name="submit">Submit
+								<i class="mdi-content-send right"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+				<h4 class="indigo-text">Previous parties</h4>
+				<div class="row">
+					<ul class="collection">
+						{{#each parties}}
+						<li id="{{_id}}" class="collection-item interactive avatar">
+							<img class="blank {{randomColor}}">
+							<span class="title">{{name}}</span>
+							<p>#{{users.length}} dj/s
+							</p>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

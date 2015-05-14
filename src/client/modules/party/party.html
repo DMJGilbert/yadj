@@ -1,23 +1,49 @@
 <template name="party">
-	<div id="apiswf"></div>
-	<script>
-		$(function () {
-			var rdioApi;
-			swfobject.embedSWF('http://www.rdio.com/api/swf/', 'apiswf', 1, 1, '9.0.0', 'expressInstall.swf', {
-				'playbackToken': 'GAlNi78J_____zlyYWs5ZG02N2pkaHlhcWsyOWJtYjkyN2xvY2FsaG9zdEbwl7EHvbylWSWFWYMZwfc=',
-				'domain': 'localhost',
-				'listener': 'rdioListener'
-			}, {
-				'allowScriptAccess': 'always'
-			}, {});
-		});
+	<div class="container fill">
+		<div class="section">
+			<div class="row">
+				<h3 class="indigo-text">{{party.name}}</h3>
+			</div>
 
-		var rdioListener = {};
+			<div class="row">
+				<div class="col s12 m6 offset-m3 l4">
+					<div class="card">
+						<div class="card-image">
+							<img src="{{party.current.icon400}}">
+							<span class="card-title">{{ party.current.name}} - {{ party.current.artist}}</span>
+						</div>
+						<div class="card-content">
+							<p>Album: {{party.current.album}}</p>
+						</div>
+						<div class="card-action indigo-text">
+							{{party.current.key}}
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m6 offset-m3 l8">
+					{{#if party.queue.length }}
+					<ul class="collection">
+						{{#each party.queue}}
+						<li id="{{key}}" class="collection-item avatar">
+							<img src="{{image dynamicIcon}}" alt="{{name}}">
+							<span class="title">{{name}}</span>
+							<p>#{{length}} songs
+							</p>
+						</li>
+						{{/each}}
+					</ul>
+					{{/if}}
+				</div>
+			</div>
 
-		rdioListener.ready = function ready(user) {
-			console.log(user);
-			rdioApi = $('#apiswf').get(0);
-			rdioApi.rdio_play('a239851');
-		}
-	</script>
+			<div class="right">
+				<button class="btn waves-effect red darken-3 waves-light" id="delete">Delete Party
+					<i class="mdi-action-delete right"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="apicontainer">
+		<div id="apiswf"></div>
+	</div>
 </template>

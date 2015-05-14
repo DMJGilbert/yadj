@@ -1,17 +1,8 @@
 ServiceConfiguration.configurations.remove({
-    service: 'google'
+    service: 'rdio'
 });
 ServiceConfiguration.configurations.insert({
-    service: 'google',
-    clientId: Meteor.settings.google.clientId,
-    secret: Meteor.settings.google.secret
+    service: 'rdio',
+    secret: Meteor.settings.rdio.consumerSecret,
+    consumerKey: Meteor.settings.rdio.consumerKey
 });
-
-//ServiceConfiguration.configurations.remove({
-//    service: 'rdio'
-//});
-//ServiceConfiguration.configurations.insert({
-//    service: 'rdio',
-//    secret: Meteor.settings.rdio.secret,
-//    consumerKey: Meteor.settings.rdio.consumerKey
-//});

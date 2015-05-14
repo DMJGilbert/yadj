@@ -10,7 +10,7 @@
 						{{#if currentUser}}
 						<a data-link="logout" class="waves-effect waves-light indigo btn">logout</a>
 						{{else}}
-						<a href="/login" class="waves-effect waves-light indigo btn">login</a> 
+						<a data-link="rdio" class="waves-effect waves-light indigo btn">login</a>
 						{{/if}}
 					</div>
 					<ul class="right hide-on-med-and-down indigo-text text-darken-2">
@@ -18,9 +18,6 @@
 						<li><a class="indigo-text" href="/host">Host</a>
 						</li>
 						<li><a class="indigo-text" href="/join">Join</a>
-						</li>
-						{{else}}
-						<li><a class="indigo-text" href="/register">Register</a>
 						</li>
 						{{/if}}
 					</ul>
@@ -32,9 +29,7 @@
 						</li>
 						<a data-link="logout" class="waves-effect waves-light indigo btn white-text">logout</a>
 						{{else}}
-						<li><a href="/register">Register</a>
-						</li>
-						<a href="/login" class="waves-effect waves-light indigo btn white-text">login</a> 
+						<a data-link="rdio" class="waves-effect waves-light indigo btn white-text">login</a>
 						{{/if}}
 					</ul>
 				</div>

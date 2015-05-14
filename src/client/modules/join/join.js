@@ -26,9 +26,16 @@ Router.route('/join', {
 
 
 Template.join.events = {
-
+	'click li.collection-item.interactive': function (event, template) {
+		var id = $(event.currentTarget).attr('id');
+		Router.go('/party/' + id);
+	}
 };
 
 Template.join.helpers({
-
+	randomColor: function () {
+		var colors = ['red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange'];
+		var num = Math.round(Math.random() * colors.length) - 1;
+		return colors[num];
+	}
 });
