@@ -16,6 +16,5 @@ materialize:materialize
 npaton:accounts-rdio
 service-configuration
 matb33:collection-hooks
-npm-container
 aldeed:template-extension
 npaton:rdio

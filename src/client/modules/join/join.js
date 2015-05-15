@@ -29,6 +29,21 @@ Template.join.events = {
 	'click li.collection-item.interactive': function (event, template) {
 		var id = $(event.currentTarget).attr('id');
 		Router.go('/party/' + id);
+	},
+	'submit form#join': function (event, template) {
+		var partyId = template.find('#partyId').value;
+		var password = template.find('#password').value;
+		event.preventDefault();
+		Meteor.call('joinParty', {
+			partyId: partyId,
+			password: password
+		}, function (error, data) {
+			if (data == 'success') {
+				Router.go('/party/' + partyId);
+			}
+		});
+		return false;
+
 	}
 };
 

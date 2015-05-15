@@ -6,6 +6,7 @@ body {
 body > div:not([class]),
 .container.fill {
 	min-height: calc(100% - 309px);
+	overflow: auto;
 }
 
 nav .nav-wrapper {

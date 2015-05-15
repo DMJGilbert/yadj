@@ -2,11 +2,11 @@
 	<div class="container fill">
 		<div class="section">
 			<div class="row">
-				<h3 class="indigo-text">{{party.name}}</h3>
+				<h3 class="indigo-text">{{party.name}} - #{{party._id}}</h3>
 			</div>
 
 			<div class="row">
-				<div class="col s12 m6 offset-m3 l4">
+				<div class="col s12 m8 offset-m2 l4">
 					<div class="card">
 						<div class="card-image">
 							<img src="{{party.current.icon400}}">
@@ -15,32 +15,73 @@
 						<div class="card-content">
 							<p>Album: {{party.current.album}}</p>
 						</div>
-						<div class="card-action indigo-text">
-							{{party.current.key}}
+<!--
+						{{#if isHost }}
+						<div class="card-action">
+							<a class="btn-floating btn-large waves-effect waves-light indigo" id="pause"><i class="{{stateToIcon}}"></i></a>
 						</div>
+						{{/if}}
+-->
 					</div>
 				</div>
-				<div class="col s12 m6 offset-m3 l8">
-					{{#if party.queue.length }}
+				<div class="col s12 m8 offset-m2 l8">
+					<div class="input-field indigo-text col s12">
+						<i class="mdi-action-search prefix"></i>
+						<input id="songSearch" type="text" class="validate indigo-text">
+						<label for="songSearch">Add song to queue</label>
+					</div>
+					{{#if songs.length }}
 					<ul class="collection">
-						{{#each party.queue}}
-						<li id="{{key}}" class="collection-item avatar">
-							<img src="{{image dynamicIcon}}" alt="{{name}}">
-							<span class="title">{{name}}</span>
-							<p>#{{length}} songs
+						{{#each songs}}
+						<li id="{{key}}" class="collection-item interactive avatar" style="{{shouldShow this}}">
+							<img src="{{icon400}}" alt="{{name}}">
+							<span class="title">{{name}} - {{artist}}</span>
+							<p>{{album}}
 							</p>
 						</li>
 						{{/each}}
 					</ul>
 					{{/if}}
+					{{#if party.queue.length }}
+					<br>
+					<h5 class="indigo-text">Queue</h5>
+					<ul class="collection">
+						{{#each party.queue}}
+						<li id="{{key}}" class="collection-item avatar">
+							<img src="{{icon400}}" alt="{{name}}">
+							<span class="title">{{name}} - {{artist}}</span>
+							<p>{{album}}
+							</p>
+						</li>
+						{{/each}}
+					</ul>
+					{{/if}}
+
+<!--
+					{{#if isHost }}{{#if party.backup.length }}
+					<br>
+					<h5 class="indigo-text">Backup</h5>
+					<ul class="collection">
+						{{#each party.backup}}
+						<li id="{{key}}" class="collection-item avatar">
+							<img src="{{icon400}}" alt="{{name}}">
+							<span class="title">{{name}} - {{artist}}</span>
+							<p>{{album}}
+							</p>
+						</li>
+						{{/each}}
+					</ul>
+					{{/if}}{{/if}}
+-->
 				</div>
 			</div>
-
+			{{#if isHost }}
 			<div class="right">
 				<button class="btn waves-effect red darken-3 waves-light" id="delete">Delete Party
 					<i class="mdi-action-delete right"></i>
 				</button>
 			</div>
+			{{/if}}
 		</div>
 	</div>
 	<div class="apicontainer">

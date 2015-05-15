@@ -50,7 +50,8 @@ Parties.attachSchema({
 		type: Number,
 	},
 	users: {
-		type: [String]
+		type: [String],
+		optional: true
 	},
 	current: {
 		type: SongSchema,
