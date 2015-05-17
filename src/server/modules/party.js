@@ -7,7 +7,7 @@
 Meteor.startup(function () {
 	Parties.allow({
 		insert: function (userId, party) {
-			return userId;
+			return userId && party.host == userId;
 		},
 		update: function (userId, party) {
 			return party.host == userId;

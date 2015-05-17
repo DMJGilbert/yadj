@@ -4,6 +4,8 @@
  */
 /* globals Router, Meteor */
 
+var id;
+
 window.rdioListener = {
 	ready: function ready(user) {
 		window.rdioApi = $('#apiswf').get(0);
@@ -11,11 +13,14 @@ window.rdioListener = {
 		window.lastAttempt = new Date();
 	},
 	playStateChanged: function (playState) {
-		Parties.update(_id, {
-			$set: {
-				status: playState
-			}
-		});
+		console.log('Status: ' + playState);
+		if (playState) {
+			Parties.update(id, {
+				$set: {
+					status: playState
+				}
+			});
+		}
 	},
 	playingTrackChanged: function (playingTrack, sourcePosition) {
 
@@ -29,7 +34,7 @@ window.rdioListener = {
 		}
 
 		if (playingTrack) {
-			Parties.update(_id, {
+			Parties.update(id, {
 				$set: {
 					current: playingTrack
 				}
@@ -119,15 +124,27 @@ Template.party.events = {
 			}
 		});
 	},
-	'click a#pause': function (event, template){
-//		var party = Parties.findOne({
-//			_id: id
-//		});
-//		if (party.state == 1) {
-//			rdioApi.rdio_play();
-//		} else {
-//			rdioApi.rdio_pause();
-//		}
+	'click a#pause': function (event, template) {
+		var party = Parties.findOne({
+			_id: id
+		});
+		if (party.status != 1) {
+			rdioApi.rdio_play();
+
+			Parties.update(id, {
+				$set: {
+					status: 1
+				}
+			});
+		} else {
+			rdioApi.rdio_pause();
+
+			Parties.update(id, {
+				$set: {
+					status: 0
+				}
+			});
+		}
 	}
 };
 
@@ -167,7 +184,7 @@ Template.party.helpers({
 		var party = Parties.findOne({
 			_id: id
 		});
-		if (party.state == 1) {
+		if (party.status == 1) {
 			return 'mdi-av-pause';
 		} else {
 			return 'mdi-av-play-arrow';

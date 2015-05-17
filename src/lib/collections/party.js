@@ -70,7 +70,6 @@ Parties.attachSchema({
 Parties.before.insert(function (userId, doc) {
 	doc.createdAt = new Date();
 	doc.host = userId;
-	doc.status = 2;
 	doc.users = [];
 	doc.users.push(userId);
 });
