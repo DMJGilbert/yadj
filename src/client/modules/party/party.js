@@ -8,6 +8,7 @@ var id;
 
 window.rdioListener = {
 	ready: function ready(user) {
+		Session.set('rdioUser', user)
 		window.rdioApi = $('#apiswf').get(0);
 		playNextSong();
 		window.lastAttempt = new Date();
@@ -74,11 +75,11 @@ Template.party.rendered = function () {
 		_id: id
 	});
 	if (party.host == Meteor.userId()) {
-		Meteor.call('getPlaybackToken', {}, function (error, data) {
+		Meteor.call('getPlaybackToken', document.location.origin.replace('http://', '').replace('/', '').split(':')[0], function (error, data) {
 			window.rdioApi = {};
 			swfobject.embedSWF('http://www.rdio.com/api/swf/', 'apiswf', 1, 1, '9.0.0', 'expressInstall.swf', {
 				'playbackToken': data,
-				'domain': 'localhost',
+				'domain': document.location.origin.replace('http://', '').replace('/', '').split(':')[0],
 				'listener': 'rdioListener'
 			}, {
 				'allowScriptAccess': 'always'
@@ -151,6 +152,9 @@ Template.party.events = {
 Template.party.helpers({
 	string: function (obj) {
 		return JSON.stringify(obj);
+	},
+	isNotSubscriber: function (){
+		return !Session.get('rdioUser').isSubscriber;
 	},
 	songs: function () {
 		return Session.get('songs');

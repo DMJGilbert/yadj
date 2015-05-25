@@ -4,7 +4,18 @@
 			<div class="row">
 				<h3 class="indigo-text">{{party.name}} - #{{party._id}}</h3>
 			</div>
-
+			<div class="row">
+				rdioUser
+			</div>
+			{{#if isNotSubscriber }}
+			<div class="row">
+				<div class="col s12">
+					<div class="card-panel indigo">
+						<span class="white-text">Subscribe to Rdio to experience YADJ properly</span>
+					</div>
+				</div>
+			</div>
+			{{/if}}
 			<div class="row">
 				<div class="col s12 m8 offset-m2 l4">
 					<div class="card">
@@ -39,8 +50,7 @@
 						</li>
 						{{/each}}
 					</ul>
-					{{/if}}
-					{{#if party.queue.length }}
+					{{/if}} {{#if party.queue.length }}
 					<br>
 					<h5 class="indigo-text">Queue</h5>
 					<ul class="collection">
@@ -55,7 +65,7 @@
 					</ul>
 					{{/if}}
 
-<!--
+					<!--
 					{{#if isHost }}{{#if party.backup.length }}
 					<br>
 					<h5 class="indigo-text">Backup</h5>
