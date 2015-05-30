@@ -74,7 +74,10 @@ Template.party.rendered = function () {
 	var party = Parties.findOne({
 		_id: id
 	});
-	if (party.host == Meteor.userId()) {
+	if(!party){
+		Router.go('/join');
+	}
+	if (party && party.host == Meteor.userId()) {
 		Meteor.call('getPlaybackToken', document.location.origin.replace('http://', '').replace('/', '').split(':')[0], function (error, data) {
 			window.rdioApi = {};
 			swfobject.embedSWF('http://www.rdio.com/api/swf/', 'apiswf', 1, 1, '9.0.0', 'expressInstall.swf', {
@@ -150,11 +153,11 @@ Template.party.events = {
 };
 
 Template.party.helpers({
-	string: function (obj) {
+	stringify: function (obj) {
 		return JSON.stringify(obj);
 	},
-	isNotSubscriber: function (){
-		return !Session.get('rdioUser').isSubscriber;
+	isNotSubscriber: function () {
+		return Session.get('rdioUser') && !Session.get('rdioUser').isSubscriber;
 	},
 	songs: function () {
 		return Session.get('songs');
@@ -166,10 +169,10 @@ Template.party.helpers({
 		var party = Parties.findOne({
 			_id: id
 		});
-		if (party.current && party.current.key == test.key) {
+		if (party &&  party.current && party.current.key == test.key) {
 			return 'display: none';
 		}
-		if (party.queue && party.queue.length) {
+		if (party && party.queue && party.queue.length) {
 			party.queue.forEach(function (song) {
 				if (song.key == test.key) {
 					return 'display: none';
@@ -182,13 +185,13 @@ Template.party.helpers({
 		var party = Parties.findOne({
 			_id: id
 		});
-		return party.host == Meteor.userId();
+		return party && party.host == Meteor.userId();
 	},
 	stateToIcon: function () {
 		var party = Parties.findOne({
 			_id: id
 		});
-		if (party.status == 1) {
+		if (party && party.status == 1) {
 			return 'mdi-av-pause';
 		} else {
 			return 'mdi-av-play-arrow';

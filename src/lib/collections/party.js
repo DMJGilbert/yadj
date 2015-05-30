@@ -9,6 +9,20 @@ Parties = new Mongo.Collection('parties');
 
 Parties.helpers({});
 
+var DJSchema = new SimpleSchema({
+	_id: {
+		type: String,
+		max: 250
+	},
+	name: {
+		type: String,
+		max: 250
+	},
+	time: {
+		type: Date
+	}
+});
+
 var SongSchema = new SimpleSchema({
 	album: {
 		type: String,
@@ -29,9 +43,12 @@ var SongSchema = new SimpleSchema({
 	icon400: {
 		type: String,
 		max: 250
+	},
+	dj: {
+		type: DJSchema,
+		optional: true
 	}
 });
-
 
 Parties.attachSchema({
 	name: {

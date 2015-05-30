@@ -4,10 +4,7 @@
 			<div class="row">
 				<h3 class="indigo-text">{{party.name}} - #{{party._id}}</h3>
 			</div>
-			<div class="row">
-				rdioUser
-			</div>
-			{{#if isNotSubscriber }}
+			{{#if isNotSubscriber }}{{#if isHost }}
 			<div class="row">
 				<div class="col s12">
 					<div class="card-panel indigo">
@@ -15,7 +12,7 @@
 					</div>
 				</div>
 			</div>
-			{{/if}}
+			{{/if}}{{/if}}
 			<div class="row">
 				<div class="col s12 m8 offset-m2 l4">
 					<div class="card">
@@ -80,7 +77,7 @@
 						{{/each}}
 					</ul>
 					{{/if}}{{/if}}
--->
+					-->
 				</div>
 			</div>
 			{{#if isHost }}
